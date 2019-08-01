@@ -9,6 +9,14 @@ Run on Ubuntu Bionic 18.04.
 
     sudo apt update
     sudo apt upgrade
+
+*Note: If proxy is used, need to modify visudo.*
+
+    sudo visudo
+    
+*Add following line to under of `Defaults env_reset`.*
+
+    Default env_keep="http_proxy ftp_proxy"
     
 Tesseract 4 packages with LSTM engine and related traineddata.
 
@@ -19,6 +27,12 @@ Add PPA repository.
 
     sudo add-apt-repository ppa:alex-p/tesseract-ocr
     sudo apt update
+    
+*Note: If proxy is used, need to add proxy to add PPA.*
+
+    export http_proxy=http://username:password@proxy:port
+    sudo su
+    add-apt-repository ppa:alex-p/tesseract-ocr
 
 ### 1.2 Installing Tesseract
 
