@@ -18,7 +18,7 @@ Run on Ubuntu Bionic 18.04.
 
     Default env_keep="http_proxy ftp_proxy"
     
-Tesseract 4 packages with LSTM engine and related traineddata.
+**Tesseract 4 packages with LSTM engine and related traineddata.**
 
 * [Ubuntu Bionic 18.04](https://packages.ubuntu.com/bionic/tesseract-ocr-all) 
 * [Ubuntu Bionic 18.04 - PPA ](https://launchpad.net/~alex-p/+archive/ubuntu/tesseract-ocr?field.series_filter=bionic)
@@ -41,7 +41,7 @@ Add PPA repository.
     sudo apt install tesseract-ocr-mya
     sudo apt install tesseract-ocr-script-mymr
     
-Note: Installationg directory is /usr/share/tesseract-ocr/4.00
+*Note: Installationg directory is /usr/share/tesseract-ocr/4.00*
     
 ### 1.3 Running Tesseract
 
