@@ -61,7 +61,7 @@ Add PPA repository.
 Create the following directorys.
 
 - `train\train_font` To place train font file. eg. `times.ttf`.
-- `train\train_text` To input train text file. eg. `train_text_0.txt`.
+- `train\train_text` To input train text file. eg. `eng_text_0.txt`.
 - `train\train_tif`  To output auto generated tif file and box file. eg. `*.tif`, `*.box`
 
 Check list of avaliable fonts.
@@ -71,10 +71,10 @@ Check list of avaliable fonts.
 
 Command Option:
 
-    text2image --text=[input_text_file].txt --outputbase=[lang].[fontname].exp0 --font='Font Name' --fonts_dir=/path/to/your/fonts
+    text2image --text=[lang]_text_0.txt --outputbase=[lang].[fontname].exp0 --font='Font Name' --fonts_dir=/path/to/your/fonts
 
 Command Example:
     
-    text2image --text=./train_text/train_text_0.txt --outputbase=./train_tif/eng.time_new_roman_regular.exp0 --font='Times New Roman' --fonts_dir=./train_font
+    text2image --text=./train_text/eng_text_0.txt --outputbase=./train_tif/eng.time_new_roman_regular.exp0 --font='Times New Roman' --fonts_dir=./train_font
     
 *Note: `eng.time_new_roman_regular.exp0.tif` and `eng.time_new_roman_regular.exp0.box` are outputed to `train_tif` directory.*
