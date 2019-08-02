@@ -61,7 +61,7 @@ Add PPA repository.
 Create the following directorys.
 
 - `train\train_font` To place train font file. eg. `times.ttf`.
-- `train\train_text` To input train text file. eg. `eng_text_0.txt`.
+- `train\train_text` To input train text file. eg. `eng_txt0.txt`.
 - `train\train_tif`  To output auto generated tif file and box file. eg. `*.tif`, `*.box`
 
 Check list of avaliable fonts.
@@ -82,3 +82,15 @@ done
 ```
 *Note: `eng.time_new_roman_regular.exp0.tif`, `eng.time_new_roman_regular.exp1.tif`, `eng.time_new_roman_regular.exp0.box` and `eng.time_new_roman_regular.exp1.box` are outputed to `train_tif` directory.*
 
+### 2.3 Install qt-box-editor to check box file
+
+Box file contain following format information.</br> 
+`<symbol> <left> <bottom> <right> <top> <page>`</br>
+Install `qt-box-editor` to check that is correct or not in GUI.
+
+    sudo apt install qt-box-editor
+
+Run qt-box-editor from command to correct character box file
+
+    qt-box-editor
+    
