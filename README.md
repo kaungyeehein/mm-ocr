@@ -94,3 +94,9 @@ Run qt-box-editor from command to correct character box file
 
     qt-box-editor
     
+### 2.4 Install Myanmar language pack on Ubuntu
+
+    sudo apt install ubuntu-restricted-extras
+    check-language-support -l my
+    sudo apt install language-pack-my
+    
