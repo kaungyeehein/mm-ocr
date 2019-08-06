@@ -17,7 +17,7 @@ Test Enviroment is Ubuntu Bionic 18.04.
     
 *Add following line to under of `Defaults env_reset`.*
 
-    Default env_keep="http_proxy ftp_proxy"
+    Default env_keep="http_proxy https_proxy ftp_proxy"
     
 **Tesseract 4 packages with LSTM engine and related traineddata.**
 
@@ -32,6 +32,8 @@ Add PPA repository.
 *Note: If proxy is used, need to add proxy to add PPA.*
 
     export http_proxy=http://username:password@proxy:port
+    export https_proxy=http://username:password@proxy:port
+    export ftp_proxy=http://username:password@proxy:port
     sudo su
     add-apt-repository ppa:alex-p/tesseract-ocr
 
