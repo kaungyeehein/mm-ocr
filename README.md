@@ -61,7 +61,7 @@ Add PPA repository.
 Create the following directorys.
 
 - `train\train_font` To place train font file. eg. `times.ttf`.
-- `train\train_text` To input train text file. eg. `eng_txt0.txt`.
+- `train\train_text` To input train text file. eg. `eng.imp0.txt`.
 - `train\train_tif`  To output auto generated tif file and box file. eg. `*.tif`, `*.box`
 
 Check list of avaliable fonts.
@@ -71,13 +71,13 @@ Check list of avaliable fonts.
 
 Command Option:
 
-    text2image --text=[lang]_txt0.txt --outputbase=[lang].[fontname].exp0 --font='Font Name' --fonts_dir=/path/to/your/fonts
+    text2image --text=[lang].imp0.txt --outputbase=[lang].[fontname].exp0 --font='Font Name' --fonts_dir=/path/to/your/fonts
 
 Command Example:
 ```Shell
 N=1 # set accordingly to the number of files that you have (count from 0 to N)
 for i in `seq 0 $N`; do
-    text2image --text=./train_text/eng_txt$i.txt --outputbase=./train_tif/eng.time_new_roman_regular.exp$i --font='Times New Roman' --fonts_dir=./train_font
+    text2image --text=./train_text/eng.imp$i.txt --outputbase=./train_tif/eng.time_new_roman_regular.exp$i --font='Times New Roman' --fonts_dir=./train_font
 done
 ```
 *Note: `eng.time_new_roman_regular.exp0.tif`, `eng.time_new_roman_regular.exp1.tif`, `eng.time_new_roman_regular.exp0.box` and `eng.time_new_roman_regular.exp1.box` are outputed to `train_tif` directory.*
