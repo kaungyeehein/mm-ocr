@@ -102,3 +102,12 @@ Run qt-box-editor from command to correct character box file
     check-language-support -l my
     sudo apt install language-pack-my
     
+### 2.5 Combine Image and Box into `*.lstmf`
+```shell
+    cd path/to/dataset
+    for file in *.tif; do
+      echo $file
+      base=`basename $file .tif`
+      tesseract $file $base lstm.train
+    done
+```
