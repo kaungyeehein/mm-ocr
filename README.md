@@ -103,6 +103,9 @@ Run qt-box-editor from command to correct character box file
     sudo apt install language-pack-my
     
 ### 2.5 Combine Image and Box into `*.lstmf`
+
+Combine multiple image and box files to lstmf files.
+
 ```shell
 cd path/to/dataset
 for file in *.tif; do
@@ -111,3 +114,8 @@ for file in *.tif; do
   tesseract $file $base lstm.train
 done
 ```
+
+Generate list of lstmf files.
+
+    ls -1 *.lstmf | sort -R > all-lstmf
+    
