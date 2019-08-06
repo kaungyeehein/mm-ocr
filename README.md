@@ -104,10 +104,10 @@ Run qt-box-editor from command to correct character box file
     
 ### 2.5 Combine Image and Box into `*.lstmf`
 ```shell
-    cd path/to/dataset
-    for file in *.tif; do
-      echo $file
-      base=`basename $file .tif`
-      tesseract $file $base lstm.train
-    done
+cd path/to/dataset
+for file in *.tif; do
+  echo $file
+  base=`basename $file .tif`
+  tesseract $file $base lstm.train
+done
 ```
