@@ -9,10 +9,7 @@ rm -rf $tif_dir
 # Create directory for tif
 mkdir $tif_dir
 
-text2image --list_available_fonts --fonts_dir $font_dir
-echo $font_list
-
-text2image --outputbase=mya.fontlist.txt --fonts_dir $font_dir --min_coverage .9 --render_per_font false
+text2image --list_available_fonts --fonts_dir $font_dir >> font_list.txt
 
 # Repert by input text
 #cd $input_dir
