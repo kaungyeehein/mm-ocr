@@ -102,7 +102,7 @@ Run qt-box-editor from command to correct character box file
     check-language-support -l my
     sudo apt install language-pack-my
     
-### 2.5 Combine Image and Box into `*.lstmf`
+### 2.5 Combine Image and Box into Training Data set `*.lstmf`
 
 Combine multiple image and box files to lstmf files.
 
@@ -118,4 +118,56 @@ done
 Generate list of lstmf files.
 
     ls -1 *.lstmf | sort -R > all-lstmf
-    
+
+### 2.6 Temp
+```
+unicharset_extractor => unicharset
+* lang.fontname.exp0.box
+
+eg. unicharset_extractor --output_unicharset mya.unicharset --norm_mode 2 ./train_tif/mya.pyidaungsu.exp0.box
+
+eg.
+110
+NULL 0 NULL 0
+N 5 59,68,216,255,87,236,0,27,104,227 Latin 11 0 1 N
+Y 5 59,68,216,255,91,205,0,47,91,223 Latin 33 0 2 Y
+1 8 59,69,203,255,45,128,0,66,74,173 Common 3 2 3 1
+9 8 18,66,203,255,89,156,0,39,104,173 Common 4 2 4 9
+a 3 58,65,186,198,85,164,0,26,97,185 Latin 56 0 5 a
+...
+
+training/set_unicharset_properties -U input_unicharset -O output_unicharset --script_dir=training/langdata
+* script_dir : the relevant .unicharset file(s)
+
+eg.
+...
+; 10 ...
+b 3 ...
+W 5 ...
+7 8 ...
+= 0 ...
+...
+
+combine_lang_model => lstm-recoder
+* input_unicharset
+* script_dir
+	- langdata
+* lang
+* word list files (optional)
+# NormalizeCleanAndSegmentUTF8
+# --pass_through_recoder
+
+wordlist2dawg mya.number.txt mya.number-dawg mya.unicharset
+wordlist2dawg mya.punc.txt mya.punc-dawg mya.unicharset
+wordlist2dawg mya.wordlist.txt mya.word-dawg mya.unicharset
+wordlist2dawg mya.frequencylist.txt mya.freq-dawg mya.unicharset
+
+lstmtraining
+* traineddata
+	- lstm-unicharset
+	- lstm-recoder
+	- lstm-punc-dawg
+	- lstm-word-dawg
+	- lstm-number-dawg
+	- config (optional)
+```
