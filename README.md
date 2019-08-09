@@ -58,7 +58,14 @@ Add PPA repository.
     sudo apt-get install libpango1.0-dev
     sudo apt-get install libcairo2-dev
     
-### 2.2 Render text to image (auto)
+### 2.2 Install Sublime Text
+
+    wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+    echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+    sudo apt update
+    sudo apt install sublime-text
+    
+### 2.3 Render text to image (auto)
 
 Create the following directorys.
 
@@ -84,7 +91,7 @@ done
 ```
 *Note: `eng.time_new_roman_regular.exp0.tif`, `eng.time_new_roman_regular.exp1.tif`, `eng.time_new_roman_regular.exp0.box` and `eng.time_new_roman_regular.exp1.box` are outputed to `train_tif` directory.*
 
-### 2.3 Install qt-box-editor to check box file
+### 2.4 Install qt-box-editor to check box file
 
 Box file contain following format information.</br> 
 `<symbol> <left> <bottom> <right> <top> <page>`</br>
@@ -96,13 +103,13 @@ Run qt-box-editor from command to correct character box file
 
     qt-box-editor
     
-### 2.4 Install Myanmar language pack on Ubuntu
+### 2.5 Install Myanmar language pack on Ubuntu
 
     sudo apt install ubuntu-restricted-extras
     check-language-support -l my
     sudo apt install language-pack-my
     
-### 2.5 Combine Image and Box into Training Data set `*.lstmf`
+### 2.6 Combine Image and Box into Training Data set `*.lstmf`
 
 Combine multiple image and box files to lstmf files.
 
@@ -119,7 +126,7 @@ Generate list of lstmf files.
 
     ls -1 *.lstmf | sort -R > all-lstmf
 
-### 2.6 Temp
+### 2.7 Temp
 ```
 unicharset_extractor => unicharset
 * lang.fontname.exp0.box
