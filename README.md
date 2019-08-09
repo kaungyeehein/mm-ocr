@@ -58,12 +58,13 @@ Add PPA repository.
     sudo apt-get install libpango1.0-dev
     sudo apt-get install libcairo2-dev
     
-### 2.2 Install Sublime Text
+### 2.2 Install Sublime Text & Character Map
 
     wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
     echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
     sudo apt update
     sudo apt install sublime-text
+    sudo apt install kcharselect
     
 ### 2.3 Render text to image (auto)
 
