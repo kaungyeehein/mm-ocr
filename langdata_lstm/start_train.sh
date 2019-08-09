@@ -34,6 +34,11 @@ for file in $tif_dir/*.box; do
 done
 unicharset_extractor --output_unicharset $lang_dir/mya.unicharset --norm_mode 2 $boxlist
 
+# Generate three dawg files
+wordlist2dawg $input_dir/mya.number.txt $lang_dir/mya.number-dawg $lang_dir/mya.unicharset
+wordlist2dawg $input_dir/mya.punc.txt $lang_dir/mya.punc-dawg $lang_dir/mya.unicharset
+wordlist2dawg $input_dir/mya.wordlist.txt $lang_dir/mya.word-dawg $lang_dir/mya.unicharset
+
 # Generate lstmf
 #for file in $tif_dir/*.tif; do
 #	echo $file
