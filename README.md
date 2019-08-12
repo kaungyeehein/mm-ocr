@@ -170,6 +170,12 @@ wordlist2dawg mya.punc.txt mya.punc-dawg mya.unicharset
 wordlist2dawg mya.wordlist.txt mya.word-dawg mya.unicharset
 wordlist2dawg mya.frequencylist.txt mya.freq-dawg mya.unicharset
 
+lang.punc-dawg
+(Optional) A dawg made from punctuation patterns found around words. The "word" part is replaced by a single space.
+
+lang.number-dawg
+(Optional) A dawg mad from tokens which originally contained digits. Each digit is replaced by a space character.
+
 lstmtraining
 * traineddata
 	- lstm-unicharset
