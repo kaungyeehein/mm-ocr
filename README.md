@@ -92,6 +92,10 @@ done
 ```
 *Note: `eng.time_new_roman_regular.exp0.tif`, `eng.time_new_roman_regular.exp1.tif`, `eng.time_new_roman_regular.exp0.box` and `eng.time_new_roman_regular.exp1.box` are outputed to `train_tif` directory.*
 
+The following command also generate a box file with name image.box for the image in the current directory.
+
+    tesseract image.png image lstmbox 
+
 ### 2.4 Install qt-box-editor to check box file
 
 Box file contain following format information.</br> 
