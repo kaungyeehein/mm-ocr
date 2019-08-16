@@ -39,12 +39,57 @@ Add PPA repository.
 
 ### 1.2 Installing Tesseract
 
+There is two way to install Tesseract. For test purpose only, use first way to install Tesseract (pre-built binary package). If purpose is to traing language data, use second way to install Tesseract (build from source).
+
+**1. Install Tesseract via pre-built binary package**
+
     sudo apt install tesseract-ocr
     sudo apt install libtesseract-dev
     sudo apt install tesseract-ocr-mya
     sudo apt install tesseract-ocr-script-mymr
-    
+
 *Note: Installationg directory is /usr/share/tesseract-ocr/4.00*
+    
+**2. Build it from source**
+
+Install enviroment dependencies
+
+    sudo apt-get install g++ # or clang++ (presumably)
+    sudo apt-get install autoconf automake libtool
+    sudo apt-get install pkg-config
+    sudo apt-get install libpng-dev
+    sudo apt-get install libjpeg8-dev
+    sudo apt-get install libtiff5-dev
+    sudo apt-get install zlib1g-dev
+    sudo apt-get install libleptonica-dev
+    
+Installing Tesseract from Git
+
+    mkdir ~/tesstutorial
+    cd ~/tesstutorial
+    
+    git clone --depth 1 https://github.com/tesseract-ocr/tesseract.git
+    cd tesseract/tessdata
+    wget https://github.com/tesseract-ocr/tessdata/raw/master/eng.traineddata
+    wget https://github.com/tesseract-ocr/tessdata/raw/master/mya.traineddata
+    wget https://github.com/tesseract-ocr/tessdata/raw/master/osd.traineddata
+    mkdir best
+    cd best
+    wget https://github.com/tesseract-ocr/tessdata_best/raw/master/eng.traineddata
+    wget https://github.com/tesseract-ocr/tessdata_best/raw/master/mya.traineddata
+
+    cd ~/tesstutorial/tesseract
+    ./autogen.sh
+    ./configure
+    make
+    make training
+    sudo make training-install
+    sudo apt install openjdk-8-jdk
+    sudo apt install curl
+    make ScrollView.jar
+    export SCROLLVIEW_PATH=$PWD/java
+    
+*Note: Installationg directory is ~/tesstutorial/tesseract*
     
 ### 1.3 Running Tesseract
 
@@ -66,7 +111,30 @@ Add PPA repository.
     sudo apt install sublime-text
     sudo apt install kcharselect
     
-### 2.3 Render text to image (auto)
+### 2.3 Create sample langdata from Git
+
+    cd ~/tesstutorial
+    mkdir langdata
+    cd langdata
+    wget https://raw.githubusercontent.com/tesseract-ocr/langdata_lstm/master/radical-stroke.txt
+    wget https://raw.githubusercontent.com/tesseract-ocr/langdata_lstm/master/common.punc
+    wget https://raw.githubusercontent.com/tesseract-ocr/langdata_lstm/master/font_properties
+    
+    wget https://raw.githubusercontent.com/tesseract-ocr/langdata_lstm/master/Latin.unicharset
+    wget https://raw.githubusercontent.com/tesseract-ocr/langdata_lstm/master/Latin.xheights
+    wget https://raw.githubusercontent.com/tesseract-ocr/langdata_lstm/master/Myanmar.unicharset
+    wget https://raw.githubusercontent.com/tesseract-ocr/langdata_lstm/master/Myanmar.xheights
+    
+    mkdir mya
+    cd mya
+    wget https://raw.githubusercontent.com/tesseract-ocr/langdata_lstm/master/mya/mya.training_text
+    wget https://raw.githubusercontent.com/tesseract-ocr/langdata_lstm/master/mya/mya.punc
+    wget https://raw.githubusercontent.com/tesseract-ocr/langdata_lstm/master/mya/mya.numbers
+    wget https://raw.githubusercontent.com/tesseract-ocr/langdata_lstm/master/mya/mya.wordlist
+    
+## 3 General Knowledge
+
+### 3.1 Render text to image (auto)
 
 Create the following directorys.
 
@@ -96,7 +164,7 @@ The following command also generate a box file with name image.box for the image
 
     tesseract image.png image lstmbox 
 
-### 2.4 Install qt-box-editor to check box file
+### 3.2 Install qt-box-editor to check box file
 
 Box file contain following format information.</br> 
 `<symbol> <left> <bottom> <right> <top> <page>`</br>
@@ -108,13 +176,13 @@ Run qt-box-editor from command to correct character box file
 
     qt-box-editor
     
-### 2.5 Install Myanmar language pack on Ubuntu
+### 3.3 Install Myanmar language pack on Ubuntu
 
     sudo apt install ubuntu-restricted-extras
     check-language-support -l my
     sudo apt install language-pack-my
     
-### 2.6 Combine Image and Box into Training Data set `*.lstmf`
+### 3.4 Combine Image and Box into Training Data set `*.lstmf`
 
 Combine multiple image and box files to lstmf files.
 
@@ -131,7 +199,7 @@ Generate list of lstmf files.
 
     ls -1 *.lstmf | sort -R > all-lstmf
 
-### 2.7 Temp
+### 3.5 Temp
 ```
 unicharset_extractor => unicharset
 * lang.fontname.exp0.box
