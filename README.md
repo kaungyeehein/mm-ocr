@@ -113,9 +113,9 @@ Run following command to apply change.
 
 ### 2.1 Install Additional Libraries Required
 
-    sudo apt-get install libicu-dev
-    sudo apt-get install libpango1.0-dev
-    sudo apt-get install libcairo2-dev
+    sudo apt install libicu-dev
+    sudo apt install libpango1.0-dev
+    sudo apt install libcairo2-dev
     
 ### 2.2 Install Sublime Text & Character Map
 
