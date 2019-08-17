@@ -31,11 +31,17 @@ Add PPA repository.
     
 *Note: If proxy is used, need to add proxy to add PPA.*
 
+Add the following to the `gedit /etc/profile` file (for system wide change) or to `gedit ~/.profile` for local user.
+
     export http_proxy=http://username:password@proxy:port
     export https_proxy=http://username:password@proxy:port
     export ftp_proxy=http://username:password@proxy:port
+
+*Run following command to add repository*
+
     sudo su
     add-apt-repository ppa:alex-p/tesseract-ocr
+    sudo apt update
 
 ### 1.2 Installing Tesseract
 
@@ -61,6 +67,8 @@ Install enviroment dependencies
     sudo apt install libjpeg8-dev
     sudo apt install libtiff5-dev
     sudo apt install zlib1g-dev
+    
+    sudo apt install libtesseract-dev
     sudo apt install libleptonica-dev
     sudo apt install openjdk-8-jdk
     sudo apt install curl
@@ -84,10 +92,16 @@ Installing Tesseract from Git
     ./autogen.sh
     ./configure
     make
-    make training
-    sudo make training-install
-    make ScrollView.jar
-    export SCROLLVIEW_PATH=$PWD/java
+    sudo make install
+    sudo ldconfig
+    
+Add the following to the `gedit /etc/profile` file (for system wide change) or to `gedit ~/.profile` for local user.
+
+    export TESSDATA_PREFIX=~/tesstutorial/tesseract/tessdata/
+    
+Run following command to apply change.
+
+    source ~/.profile
     
 *Note: Installationg directory is ~/tesstutorial/tesseract*
     
@@ -111,7 +125,15 @@ Installing Tesseract from Git
     sudo apt install sublime-text
     sudo apt install kcharselect
     
-### 2.3 Create sample langdata from Git
+### 2.3 Build Training Enviroment
+
+    cd ~/tesstutorial/tesseract
+    make training
+    sudo make training-install
+    make ScrollView.jar
+    export SCROLLVIEW_PATH=$PWD/java
+    
+### 2.4 Create sample langdata from Git
 
     cd ~/tesstutorial
     mkdir langdata
