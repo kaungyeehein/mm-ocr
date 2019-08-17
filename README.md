@@ -37,6 +37,10 @@ Add the following to the `gedit /etc/profile` file (for system wide change) or t
     export https_proxy=http://username:password@proxy:port
     export ftp_proxy=http://username:password@proxy:port
 
+Run following command to apply change.
+
+    source ~/.profile
+
 *Run following command to add repository*
 
     sudo su
@@ -131,7 +135,14 @@ Run following command to apply change.
     make training
     sudo make training-install
     make ScrollView.jar
-    export SCROLLVIEW_PATH=$PWD/java
+    
+Add the following to the `gedit /etc/profile` file (for system wide change) or to `gedit ~/.profile` for local user.
+
+    export SCROLLVIEW_PATH=~/tesstutorial/tesseract/java/
+    
+Run following command to apply change.
+
+    source ~/.profile
     
 ### 2.4 Create sample langdata from Git
 
