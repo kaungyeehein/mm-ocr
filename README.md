@@ -63,6 +63,7 @@ Install enviroment dependencies
     sudo apt install zlib1g-dev
     sudo apt install libleptonica-dev
     sudo apt install openjdk-8-jdk
+    sudo apt install curl
     
 Installing Tesseract from Git
 
@@ -85,8 +86,6 @@ Installing Tesseract from Git
     make
     make training
     sudo make training-install
-    sudo apt install openjdk-8-jdk
-    sudo apt install curl
     make ScrollView.jar
     export SCROLLVIEW_PATH=$PWD/java
     
