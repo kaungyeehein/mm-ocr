@@ -31,11 +31,21 @@ Add PPA repository.
     
 *Note: If proxy is used, need to add proxy to add PPA.*
 
+Add the following to the `gedit /etc/profile` file (for system wide change) or to `gedit ~/.profile` for local user.
+
     export http_proxy=http://username:password@proxy:port
     export https_proxy=http://username:password@proxy:port
     export ftp_proxy=http://username:password@proxy:port
+
+Run following command to apply change.
+
+    source ~/.profile
+
+*Run following command to add repository*
+
     sudo su
     add-apt-repository ppa:alex-p/tesseract-ocr
+    sudo apt update
 
 ### 1.2 Installing Tesseract
 
@@ -54,14 +64,18 @@ There is two way to install Tesseract. For test purpose only, use first way to i
 
 Install enviroment dependencies
 
-    sudo apt-get install g++ # or clang++ (presumably)
-    sudo apt-get install autoconf automake libtool
-    sudo apt-get install pkg-config
-    sudo apt-get install libpng-dev
-    sudo apt-get install libjpeg8-dev
-    sudo apt-get install libtiff5-dev
-    sudo apt-get install zlib1g-dev
-    sudo apt-get install libleptonica-dev
+    sudo apt install g++ # or clang++ (presumably)
+    sudo apt install autoconf automake libtool
+    sudo apt install pkg-config
+    sudo apt install libpng-dev
+    sudo apt install libjpeg8-dev
+    sudo apt install libtiff5-dev
+    sudo apt install zlib1g-dev
+    
+    sudo apt install libtesseract-dev
+    sudo apt install libleptonica-dev
+    sudo apt install openjdk-8-jdk
+    sudo apt install curl
     
 Installing Tesseract from Git
 
@@ -82,12 +96,16 @@ Installing Tesseract from Git
     ./autogen.sh
     ./configure
     make
-    make training
-    sudo make training-install
-    sudo apt install openjdk-8-jdk
-    sudo apt install curl
-    make ScrollView.jar
-    export SCROLLVIEW_PATH=$PWD/java
+    sudo make install
+    sudo ldconfig
+    
+Add the following to the `gedit /etc/profile` file (for system wide change) or to `gedit ~/.profile` for local user.
+
+    export TESSDATA_PREFIX=~/tesstutorial/tesseract/tessdata/
+    
+Run following command to apply change.
+
+    source ~/.profile
     
 *Note: Installationg directory is ~/tesstutorial/tesseract*
     
@@ -99,9 +117,9 @@ Installing Tesseract from Git
 
 ### 2.1 Install Additional Libraries Required
 
-    sudo apt-get install libicu-dev
-    sudo apt-get install libpango1.0-dev
-    sudo apt-get install libcairo2-dev
+    sudo apt install libicu-dev
+    sudo apt install libpango1.0-dev
+    sudo apt install libcairo2-dev
     
 ### 2.2 Install Sublime Text & Character Map
 
@@ -111,7 +129,22 @@ Installing Tesseract from Git
     sudo apt install sublime-text
     sudo apt install kcharselect
     
-### 2.3 Create sample langdata from Git
+### 2.3 Build Training Enviroment
+
+    cd ~/tesstutorial/tesseract
+    make training
+    sudo make training-install
+    make ScrollView.jar
+    
+Add the following to the `gedit /etc/profile` file (for system wide change) or to `gedit ~/.profile` for local user.
+
+    export SCROLLVIEW_PATH=~/tesstutorial/tesseract/java/
+    
+Run following command to apply change.
+
+    source ~/.profile
+    
+### 2.4 Create sample langdata from Git
 
     cd ~/tesstutorial
     mkdir langdata
@@ -131,6 +164,36 @@ Installing Tesseract from Git
     wget https://raw.githubusercontent.com/tesseract-ocr/langdata_lstm/master/mya/mya.punc
     wget https://raw.githubusercontent.com/tesseract-ocr/langdata_lstm/master/mya/mya.numbers
     wget https://raw.githubusercontent.com/tesseract-ocr/langdata_lstm/master/mya/mya.wordlist
+    
+### 2.5 Install MS fonts
+
+Locations of your fonts are defined in `gedit /etc/fonts/fonts.conf`.
+
+    /usr/share/fonts
+    /usr/local/share/fonts
+    /home/<username>/.fonts
+
+Command to install MS fonts
+
+    sudo apt update
+    sudo apt install ttf-mscorefonts-installer
+    sudo apt install fonts-dejavu
+    fc-cache -vf
+    
+### 2.6 Install Myanmar fonts
+
+    mkdir mmfonts
+    cd mmfonts
+    wget https://github.com/kaungyeehein/mm-ocr/raw/master/langdata_lstm/01_train_font/Myanmar3_V1.358.ttf
+    wget https://github.com/kaungyeehein/mm-ocr/raw/master/langdata_lstm/01_train_font/NotoSansMyanmar-Bold.ttf
+    wget https://github.com/kaungyeehein/mm-ocr/raw/master/langdata_lstm/01_train_font/NotoSansMyanmar-Regular.ttf
+    wget https://github.com/kaungyeehein/mm-ocr/raw/master/langdata_lstm/01_train_font/Padauk-Bold.ttf
+    wget https://github.com/kaungyeehein/mm-ocr/raw/master/langdata_lstm/01_train_font/Padauk-Regular.ttf
+    wget https://github.com/kaungyeehein/mm-ocr/raw/master/langdata_lstm/01_train_font/Pyidaungsu-2.5.3_Bold.ttf
+    wget https://github.com/kaungyeehein/mm-ocr/raw/master/langdata_lstm/01_train_font/Pyidaungsu-2.5.3_Regular.ttf
+    cd ..
+    sudo mv mmfonts /usr/share/fonts/mmfonts
+    fc-cache -vf
     
 ## 3 General Knowledge
 
