@@ -54,14 +54,15 @@ There is two way to install Tesseract. For test purpose only, use first way to i
 
 Install enviroment dependencies
 
-    sudo apt-get install g++ # or clang++ (presumably)
-    sudo apt-get install autoconf automake libtool
-    sudo apt-get install pkg-config
-    sudo apt-get install libpng-dev
-    sudo apt-get install libjpeg8-dev
-    sudo apt-get install libtiff5-dev
-    sudo apt-get install zlib1g-dev
-    sudo apt-get install libleptonica-dev
+    sudo apt install g++ # or clang++ (presumably)
+    sudo apt install autoconf automake libtool
+    sudo apt install pkg-config
+    sudo apt install libpng-dev
+    sudo apt install libjpeg8-dev
+    sudo apt install libtiff5-dev
+    sudo apt install zlib1g-dev
+    sudo apt install libleptonica-dev
+    sudo apt install openjdk-8-jdk
     
 Installing Tesseract from Git
 
