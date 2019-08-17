@@ -191,6 +191,8 @@ Command to install MS fonts
     wget https://github.com/kaungyeehein/mm-ocr/raw/master/langdata_lstm/01_train_font/Padauk-Regular.ttf
     wget https://github.com/kaungyeehein/mm-ocr/raw/master/langdata_lstm/01_train_font/Pyidaungsu-2.5.3_Bold.ttf
     wget https://github.com/kaungyeehein/mm-ocr/raw/master/langdata_lstm/01_train_font/Pyidaungsu-2.5.3_Regular.ttf
+    wget https://github.com/kaungyeehein/mm-ocr/raw/master/langdata_lstm/01_train_font/myanmarsanspro-regular.ttf
+    wget https://github.com/kaungyeehein/mm-ocr/raw/master/langdata_lstm/01_train_font/tharlon-regular.ttf
     cd ..
     sudo mv mmfonts /usr/share/fonts/mmfonts
     fc-cache -vf
