@@ -165,6 +165,36 @@ Run following command to apply change.
     wget https://raw.githubusercontent.com/tesseract-ocr/langdata_lstm/master/mya/mya.numbers
     wget https://raw.githubusercontent.com/tesseract-ocr/langdata_lstm/master/mya/mya.wordlist
     
+### 2.5 Install MS fonts
+
+Locations of your fonts are defined in `gedit /etc/fonts/fonts.conf`.
+
+    /usr/share/fonts
+    /usr/local/share/fonts
+    /home/<username>/.fonts
+
+Command to install MS fonts
+
+    sudo apt update
+    sudo apt install ttf-mscorefonts-installer
+    sudo apt install fonts-dejavu
+    fc-cache -vf
+    
+### 2.6 Install Myanmar fonts
+
+    mkdir mmfonts
+    cd mmfonts
+    wget https://github.com/kaungyeehein/mm-ocr/raw/master/langdata_lstm/01_train_font/Myanmar3_V1.358.ttf
+    wget https://github.com/kaungyeehein/mm-ocr/raw/master/langdata_lstm/01_train_font/NotoSansMyanmar-Bold.ttf
+    wget https://github.com/kaungyeehein/mm-ocr/raw/master/langdata_lstm/01_train_font/NotoSansMyanmar-Regular.ttf
+    wget https://github.com/kaungyeehein/mm-ocr/raw/master/langdata_lstm/01_train_font/Padauk-Bold.ttf
+    wget https://github.com/kaungyeehein/mm-ocr/raw/master/langdata_lstm/01_train_font/Padauk-Regular.ttf
+    wget https://github.com/kaungyeehein/mm-ocr/raw/master/langdata_lstm/01_train_font/Pyidaungsu-2.5.3_Bold.ttf
+    wget https://github.com/kaungyeehein/mm-ocr/raw/master/langdata_lstm/01_train_font/Pyidaungsu-2.5.3_Regular.ttf
+    cd ..
+    sudo mv mmfonts /usr/share/fonts/mmfonts
+    fc-cache -vf
+    
 ## 3 General Knowledge
 
 ### 3.1 Render text to image (auto)
