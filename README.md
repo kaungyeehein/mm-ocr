@@ -322,3 +322,5 @@ lstmtraining
 	- lstm-number-dawg
 	- config (optional)
 ```
+
+## This is not complete. To be continue and I need contributer to support Myanmar OCR
